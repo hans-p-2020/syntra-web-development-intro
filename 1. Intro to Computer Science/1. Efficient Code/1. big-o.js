@@ -1,8 +1,18 @@
+const arrayOfTen = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
+const customArray = arrayOfTen;
 /**
  * Write a function that prints every even number of a list of numbers
- * O(N)
  */
-function print_even_numbers() {}
+
+function print_even_numbers( array ) {
+
+  for (let item of array) {
+    if ( item % 2 == 0 ){
+      console.log( item );
+    }
+  }
+  
+}
 
 /**
  * Look at the functions below, what is the time complexity?
@@ -10,15 +20,41 @@ function print_even_numbers() {}
 
 // 1. Even or odd
 
-function isEven(value) {}
+function isEven(value) {
+  if( value % 2 === 0 ){
+    return true;
+  } else {
+    return false;
+  }
+}
 
 // 2. Are You Here?
 
-function areYouHere(arr1, arr2) {}
+/*
+* Zit eerste item van array 1 in array 2
+* Zitten alle items van array1 in array2?
+*/
+
+function areYouHere(arr1, arr2) {
+  return arr1.filter( 
+    arrElem => arr2.includes( arrElem )
+  )
+}
+
+//console.log ( 'areyouhere', areYouHere( [10, 18, 17, 4, 14], [2, 16, 10, 14, 18] ) );
 
 // 3. Doubler
 
-function doubleArrayValues(array) {}
+/*
+* Loop over een array en verdubbel de waarde
+*/
+
+function doubleArrayValues(array) {
+  return array.map( elem => elem * 2)
+}
+
+
+console.log( 'doubleArrayValues', doubleArrayValues( [10, 18, 17, 4, 14] ));
 
 // 4. Naive Search
 
