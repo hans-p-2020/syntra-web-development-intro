@@ -17,7 +17,6 @@ function print_even_numbers( array ) {
 /**
  * Look at the functions below, what is the time complexity?
  */
-
 // 1. Even or odd
 
 function isEven(value) {
