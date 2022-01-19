@@ -48,20 +48,55 @@ function areYouHere(arr1, arr2) {
 * Loop over een array en verdubbel de waarde
 */
 
-function doubleArrayValues(array) {
-  return array.map( elem => elem * 2)
+function doubleArrayValues( array ) {
+  return array.map( elem => elem * 2 )
 }
 
+function doubleArrayValues2( array ) {
+  for( let i = 0; i < array.length; i++ ){
+    array[i] *= 2;
+  }
+  return array;
+}
 
-console.log( 'doubleArrayValues', doubleArrayValues( [10, 18, 17, 4, 14] ));
+// console.log( 'doubleArrayValues', doubleArrayValues( [10, 18, 17, 4, 14] ));
+// console.log( 'doubleArrayValues', doubleArrayValues2( [10, 18, 17, 4, 14] ));
 
 // 4. Naive Search
+/*
+* return index of an item in an array
+*/
+function naiveSearch(array, item) {
+  return array.indexOf( item );
+}
 
-function naiveSearch(array, item) {}
+function naiveSearch2( array, item ) {
+  for (let i = 0; i <= array.length; i++) {
+    let cv = array[i];
+    if ( cv === item ) {
+      return i;
+    }
+  }
+}
+
+// console.log( 'naiveSearch', naiveSearch( [10, 18, 17, 4, 14], 4 ) );
+// console.log( 'naiveSearch', naiveSearch2( [10, 18, 17, 4, 14], 4 ) );
 
 // 5. Creating Pairs
+/*
+* maak een paar van elke mogelijke combinatie
+*/
+function createPairs(arr1, arr2) {
+  for( let i = 0; i < arr1.length; i++ ) {
+    const itemFromArray1 = arr1[i]
+    for( let j = 0; j < arr2.length; j++ ){
+      const itemFromArray2 = arr2[j]
+      console.log(`${itemFromArray1}-${itemFromArray2}`)
+    }
+  }
+}
 
-function createPairs(arr) {}
+// console.log( 'createPairs', createPairs( [10, 18, 17, 4, 14], [2, 16, 10, 14, 18] ));
 
 // 6. Computing Fibonacci Numbers
 
@@ -72,8 +107,13 @@ function generateFib(num) {}
 function efficientSearch(array, item) {}
 
 // 8. Random element
-
-function findRandomElement(arr) {}
+/*
+* Zoek een random element
+*/
+function findRandomElement(arr) {
+  return arr[Math.floor( Math.random() * arr.length )];
+}
+console.log( 'findRandomElement', findRandomElement( [10, 18, 17, 4, 14] ) )
 
 // 9. Is It Prime?
 
