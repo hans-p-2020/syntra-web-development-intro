@@ -1,5 +1,7 @@
 # Syntra Web Development
 
+> The website can be found [here](https://temmermans.github.io/syntra-web-development-intro/#/)
+
 ## Getting started
 
 1. Install nodejs from this site: [Node.JS](https://nodejs.org/en/)
@@ -11,5 +13,6 @@
 Let's get started!
 
 - [Intro to Computer Science](/intro-to-computer-science/README)
+- [Vanilla Javascript](/vanilla-javascript/README)
 - [Intro to React](/intro-to-react/README)
 - [Intro to Express](/intro-to-express/README)
