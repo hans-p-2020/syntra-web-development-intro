@@ -73,18 +73,59 @@
 
       // 1. Filter the list of inventors for those who were born in the 1500's
 
+      const filterInventors = inventors.filter( inventor => ( inventor.year >= 1500 && inventor.year < 1600 ) );
+      console.log( 'filterInventors', filterInventors );
+
       // 2. Give us an array of the inventors first and last names
+      const listOfNames = inventors.map( inventor => `${inventor.first} ${inventor.last}` );
+      console.log( 'listOfNames', listOfNames );
 
       // 3. Sort the inventors by birthdate, oldest to youngest
+      const sortListByBirth = inventors.sort( ( firstInventorToCompare, secondInventorToCompare ) => {
+        if( firstInventorToCompare.year > secondInventorToCompare.year) { return 1 }
+        else { return -1 }
+      });
+      console.log( 'sortListByBirth', sortListByBirth );
 
       // 4. How many years did all the inventors live all together?
+      const countTotalYears = inventors.reduce( (accumulatedInventors, currentInventor) => {
+        return accumulatedInventors + ( currentInventor.passed - currentInventor.year );
+      }, 0);
+      console.log( 'countTotalYears', countTotalYears );
 
       // 5. Sort the inventors by years lived
+      const inventorsListWithAge = inventors.map( inventor => {
+        return { ...inventor, age: inventor.passed - inventor.year }  ;
+      });
+      const sortListByAge = inventorsListWithAge.sort( ( firstInventorToCompare, secondInventorToCompare ) => {
+        if( firstInventorToCompare.age > secondInventorToCompare.age ) { return 1 }
+        else { return -1 }
+      });
+      console.log( 'sortListByAge', sortListByAge );
 
       // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
       // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+      const categorys = document.querySelectorAll('.mw-category li a');
+      const elements = Array.from( categorys ).map( element => element.textContent );
+      const filter = elements.filter( item => item.includes('de') );
+      //console.log(filter);
+
       // Sort the people alphabetically by last name
+      const splittedNames = people.map( person => {
+        return { firstName, lastName } = person.split(', ');
+      }) ;
+      //console.log('splittedNames', splittedNames);
+
+      // nog verder op te lossen -------
+      // -------------------------------
+      // const sortPeople = splittedNames.sort( ( firstToCompare, secondToCompare ) => {
+      //   if( firstToCompare.Array[1] > secondToCompare.Array[1] ) { return 1 }
+      //   else { return 0 }
+      // } )
+      
+      // console.log('sortPeople', sortPeople);
+
 
       // Sum up the instances of each of these
       const data = [
@@ -103,6 +144,24 @@
         "car",
         "truck",
       ];
+
+      const countUniqueWords = {};
+      // oplossing 1
+      data.forEach( word => countUniqueWords[word] = 1 + (countUniqueWords[word] || 0) );
+      // oplossing 2
+      // for ( let i = 0; i < data.length; i++ ) {
+      //   countUniqueWords[data[i]] = 1 + ( countUniqueWords[data[i]] || 0 );
+      // }
+      // oplossing 3
+      const wordsCounter = data.reduce((acc, cv) => {
+        // check if currentvalue is already present in accumulator
+        const cvExist = acc[cv];
+        if( !cvExist ){ acc[cv] = 0 }
+        acc[cv]++
+        return acc;
+      }, {});
+      console.log( 'countUniqueWords', countUniqueWords );
+      console.log( 'wordsCounter', wordsCounter );
     </script>
   </body>
 </html>
