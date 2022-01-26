@@ -1,8 +1,11 @@
+const myArray = [ 1879, 1955, 1643, 1727, 1564, 1642, 1867, 1934, 1571, 1630,1473,1543, 1858, 1947, 1898, 1979, 1815, 1852, 1855, 1905, 1878, 1968, 1829, 1909 ]
 /**
  * Write a function that prints every even number of a list of numbers
  * O(N)
  */
-function print_even_numbers() {}
+ function print_even_numbers( array ) {
+
+  }
 
 /**
  * Look at the functions below, what is the time complexity?
