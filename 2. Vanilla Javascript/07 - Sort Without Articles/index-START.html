@@ -46,7 +46,39 @@
   <ul id="bands"></ul>
 
 <script>
-const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+  const bands = [
+    'The Plot in You',
+    'The Devil Wears Prada',
+    'Pierce the Veil',
+    'Norma Jean',
+    'The Bled',
+    'Say Anything',
+    'The Midway State',
+    'We Came as Romans',
+    'Counterparts',
+    'Oh, Sleeper',
+    'A Skylit Drive',
+    'Anywhere But Here',
+    'An Old Dog'
+  ];
+
+  const getList = document.querySelector('#bands');
+
+  // bands.forEach( band => {
+  //   const listItem = document.createElement( "li" );
+  //   listItem.textContent = band;
+  //   getList.appendChild( listItem );
+  // })
+
+  function trim(string){
+    return string.replace( /the |a |an /gi, "" );
+  }
+
+  const sorted = bands.sort( (a, b) => ( trim(a) > trim(b) ? 1 : -1));
+  
+  getList.innerHTML = bands.map( band => `<li>${band}</li>` ).join('');
+
+  // bands.sort();
 
 
 </script>

@@ -182,6 +182,42 @@
     </li>
   </ul>
 <script>
+  // get the list
+  const getList = document.querySelector('.videos');
+  // get all the listitems
+  const listItems = getList.querySelectorAll('li');
+  // transform the nodelist in an array
+  const allItems = Array.from(listItems);
+  // map over the new array
+  const convertedItems = allItems.map( item => {
+    // separate minutes from seconds
+    const getTime = item.dataset.time.split(':');
+    // return the total time calculation
+    return totalSeconds = (parseFloat(getTime[0]) * 60) + parseFloat(getTime[1]);
+  });
+  // show the total time
+  const totalTime = convertedItems.reduce( (cv, acc) => cv += acc );
+  console.log( 'Total time', totalTime, 'seconds' );
+
+  // convert time in h:m:s
+  function secondsToTime( time ) {
+    const h = Math.floor(time / 3600);
+    const m = Math.floor(time % 3600 / 60);
+    const s = Math.floor(time % 3600 % 60);
+
+    return `${h}u ${m}m ${s}s`;
+
+    // Let's make it show as a fancy string
+    // const hours = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+    // const minutes = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
+    // const seconds = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+    // return hours + minutes + seconds; 
+  }
+
+  console.log( secondsToTime(totalTime) );
+
+
+
 </script>
 </body>
 </html>

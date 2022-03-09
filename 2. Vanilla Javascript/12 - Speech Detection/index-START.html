@@ -12,7 +12,35 @@
 <script>
   window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
+  const recognition = new SpeechRecognition();
+  recognition.interimResults = true;
+  recognition.lang = 'nl-BE';
 
+  const wordsList = document.querySelector('.words');
+  let text = document.createElement('p');
+  wordsList.appendChild(text);
+
+  recognition.addEventListener('result', (e) => {
+    // console.log('e.results', e.results[0][0].transcript);
+    const speech = Array.from(e.results).map( result => result[0]).map(result => result.transcript).join("");
+    const isFinal = e.results[0].isFinal;
+
+    text.textContent = speech;
+
+    const convertVloek = speech.replace(/miljaar|miljard|verdomme/gi, '😱 niet vloeken hé');
+    const convertPoop = speech.replace(/kaka|lachend kakske|kak/gi, '💩');
+
+    text.textContent = convertVloek;
+    
+
+    if(isFinal){
+      text = document.createElement('p');
+      wordsList.appendChild(text);
+    }
+  });
+
+  recognition.addEventListener('end', recognition.start);
+  recognition.start();
 </script>
 
 
